@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+dist/
+build/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Editors / OS
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+Thumbs.db
+desktop.ini
+
+# Docker
+*.log
