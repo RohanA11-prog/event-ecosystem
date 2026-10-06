@@ -4,7 +4,7 @@ from uuid import UUID, uuid4
 
 import httpx
 import pytest
-from ecosystem_shared import BaseEvent
+from ecosystem_shared import BaseEvent, OrderCreated
 from order_service.main import app, get_broker, get_repository
 from order_service.repository import OrderRepository
 
@@ -58,6 +58,7 @@ async def test_create_order_publishes_event(broker: FakeBroker) -> None:
     assert Decimal(body["total_amount"]) == Decimal("21.00")
     assert len(broker.published) == 1
     event = broker.published[0]
+    assert isinstance(event, OrderCreated)
     assert event.event_type == "order.created"
     assert event.order_id == UUID(body["order_id"])
 
