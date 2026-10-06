@@ -1,0 +1,16 @@
+@host = http://localhost:8001
+
+### Create an order
+POST {{host}}/orders
+Content-Type: application/json
+
+{
+  "customer_id": "cust-1",
+  "items": [
+    { "sku": "ABC", "quantity": 2, "unit_price": "10.50" },
+    { "sku": "XYZ", "quantity": 1, "unit_price": "5.00" }
+  ]
+}
+
+### Get an order (paste an order_id from the response above)
+GET {{host}}/orders/00000000-0000-0000-0000-000000000000

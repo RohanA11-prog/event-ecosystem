@@ -14,16 +14,18 @@ dev = [
     "pytest-asyncio",
     "httpx",
     "ecosystem-shared",
+    "order-service",
 ]
 
 [tool.uv]
 package = false
 
 [tool.uv.workspace]
-members = ["shared"]
+members = ["shared", "services/order-service"]
 
 [tool.uv.sources]
 ecosystem-shared = { workspace = true }
+order-service = { workspace = true }
 
 [tool.ruff]
 line-length = 100
