@@ -3,15 +3,21 @@ services:
     image: rabbitmq:4.1-management
     container_name: rabbitmq
     ports:
-      - "5672:5672"     # AMQP: what your Python code connects to
-      - "15672:15672"   # Management UI: what you open in a browser
+      - "5672:5672"
+      - "15672:15672"
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - event-net
     healthcheck:
       test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
       interval: 10s
       timeout: 5s
       retries: 10
+
+networks:
+  event-net:
+    name: event-net
 
 volumes:
   rabbitmq_data:
