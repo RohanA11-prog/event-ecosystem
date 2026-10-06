@@ -1,0 +1,4 @@
+@host = http://localhost:8002
+
+### Get the payment for an order
+GET {{host}}/payments/d896d590-316a-494a-8c23-b460cd17ba44

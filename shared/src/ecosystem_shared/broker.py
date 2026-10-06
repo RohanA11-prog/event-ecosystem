@@ -31,6 +31,12 @@ class BrokerClient:
             await self._connection.close()
         self._connection = self._channel = self._exchange = None
 
+    async def new_channel(self) -> AbstractChannel:
+        """Open a separate channel (consumers should not share the publishing channel)."""
+        if self._connection is None:
+            raise RuntimeError("BrokerClient is not connected; call connect() first")
+        return await self._connection.channel()
+
     @property
     def channel(self) -> AbstractChannel:
         if self._channel is None:

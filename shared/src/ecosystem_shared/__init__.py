@@ -5,6 +5,7 @@ from ecosystem_shared.constants import (
     PAYMENT_FAILED,
     PAYMENT_PROCESSED,
 )
+from ecosystem_shared.consumer import EventConsumer, EventHandler, InMemoryDedupStore
 from ecosystem_shared.events import (
     EVENT_REGISTRY,
     BaseEvent,
@@ -24,6 +25,9 @@ __all__ = [
     "BaseEvent",
     "BrokerClient",
     "BrokerSettings",
+    "EventConsumer",
+    "EventHandler",
+    "InMemoryDedupStore",
     "OrderCreated",
     "OrderItem",
     "PaymentFailed",
