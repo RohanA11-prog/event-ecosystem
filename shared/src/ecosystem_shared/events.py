@@ -43,6 +43,7 @@ class PaymentProcessed(BaseEvent):
     event_type: ClassVar[str] = PAYMENT_PROCESSED
 
     order_id: UUID
+    customer_id: str
     payment_id: UUID
     amount: Decimal = Field(gt=0)
     currency: str = Field(default="USD", min_length=3, max_length=3)
@@ -52,6 +53,7 @@ class PaymentFailed(BaseEvent):
     event_type: ClassVar[str] = PAYMENT_FAILED
 
     order_id: UUID
+    customer_id: str
     reason: str
     amount: Decimal = Field(gt=0)
     currency: str = Field(default="USD", min_length=3, max_length=3)

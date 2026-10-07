@@ -1,0 +1,7 @@
+@host = http://localhost:8003
+
+### All notifications
+GET {{host}}/notifications
+
+### Notifications for one order
+GET {{host}}/notifications/8ffcab94-834c-4872-9d67-3675317477a1

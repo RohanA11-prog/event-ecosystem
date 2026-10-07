@@ -54,3 +54,16 @@ def test_empty_items_rejected() -> None:
             items=[],
             total_amount=Decimal("1"),
         )
+
+
+def test_payment_failed_roundtrip_keeps_customer_id() -> None:
+    event = PaymentFailed(
+        correlation_id=uuid4(),
+        order_id=uuid4(),
+        customer_id="cust-9",
+        reason="card declined",
+        amount=Decimal("5.00"),
+    )
+    restored = PaymentFailed.model_validate_json(event.model_dump_json())
+    assert restored == event
+    assert restored.customer_id == "cust-9"

@@ -16,18 +16,26 @@ dev = [
     "ecosystem-shared",
     "order-service",
     "payment-service",
+    "notification-service",
+
 ]
 
 [tool.uv]
 package = false
 
 [tool.uv.workspace]
-members = ["shared", "services/order-service",  "services/payment-service"]
+members = [
+    "shared",
+    "services/order-service",
+    "services/payment-service",
+    "services/notification-service",
+]
 
 [tool.uv.sources]
 ecosystem-shared = { workspace = true }
 order-service = { workspace = true }
 payment-service = { workspace = true }
+notification-service = { workspace = true }
 
 [tool.ruff]
 line-length = 100

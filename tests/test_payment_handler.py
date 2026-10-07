@@ -42,6 +42,7 @@ async def test_approved_order_publishes_payment_processed() -> None:
     assert isinstance(result, PaymentProcessed)
     assert result.order_id == order.order_id
     assert result.correlation_id == order.correlation_id
+    assert result.customer_id == order.customer_id
 
 
 async def test_declined_customer_publishes_payment_failed() -> None:
